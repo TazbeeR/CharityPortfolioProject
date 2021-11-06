@@ -8,7 +8,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Document</title>
+    <title>Podziel się tym co masz</title>
 
     <link rel="stylesheet" href="<c:url value="resources/css/style.css"/>"/>
 </head>
@@ -21,11 +21,11 @@
         </ul>
 
         <ul>
-            <li><a href="#" class="btn btn--without-border active">Start</a></li>
-            <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
-            <li><a href="#" class="btn btn--without-border">O nas</a></li>
-            <li><a href="#" class="btn btn--without-border">Fundacje i organizacje</a></li>
-            <li><a href="#" class="btn btn--without-border">Kontakt</a></li>
+            <li><a href="index.jsp" class="btn btn--without-border active">Start</a></li>
+            <li><a href="#steps" class="btn btn--without-border">O co chodzi?</a></li>
+            <li><a href="#about-us" class="btn btn--without-border">O nas</a></li>
+            <li><a href="#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
+            <li><a href="#contact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
     </nav>
     <div class="slogan container container--90">
