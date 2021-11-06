@@ -13,13 +13,11 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
-/**
- * Utwórz repozytorium dla tej encji (jeśli chcesz możesz utworzyć serwis, jednak nie jest to konieczne).
- */
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+
 public class Donation {
 
     @Id
@@ -52,7 +50,7 @@ public class Donation {
 
     @NotNull
     private LocalDate pickUpDate;
-    
+
     @NotNull
     private LocalTime pickUpTime;
 
