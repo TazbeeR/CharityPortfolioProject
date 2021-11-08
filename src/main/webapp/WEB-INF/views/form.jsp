@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
 <%@include file="header.jsp" %>
@@ -52,7 +53,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input id="quantityOfBags" type="number" name="bags" step="1" min="1"/>
+                        <input id="quantityOfBags" type="number" name="quantity" step="1" min="1"/>
                     </label>
                 </div>
 
@@ -70,10 +71,10 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input id="institutionNames" type="radio" name="organization" value="${institution.id}"/>
+                            <input id="institutionNames" type="radio" name="institution" value="${institution.id}"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
-                  <div class="title">Fundacja ${institution.name}</div>
+                  <div id="selected${institution.id}" class="title">Fundacja ${institution.name}</div>
                   <div class="subtitle">
                     Cel i misja: ${institution.description}
                   </div>
@@ -96,7 +97,7 @@
                     <div class="form-section--column">
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input id="formStreet" type="text" name="address"/> </label>
+                            <label> Ulica <input id="formStreet" type="text" name="street"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
@@ -105,7 +106,7 @@
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <input id="formPostCode" type="text" name="postcode"/>
+                                Kod pocztowy <input id="formPostCode" type="text" name="zipCode"/>
                             </label>
                         </div>
 
@@ -119,11 +120,11 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input id="formDate" type="date" name="data"/> </label>
+                            <label> Data <input id="formDate" type="date" name="pickUpDate"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input id="formTime" type="time" name="time"/> </label>
+                            <label> Godzina <input id="formTime" type="time" name="pickUpTime"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
@@ -165,18 +166,18 @@
                             <h4>Adres odbioru:</h4>
                             <ul>
                                 <li id="liStreet"></li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
+                                <li id="liCity" ></li>
+                                <li id="liPostCode"></li>
+                                <li id="liPhone"></li>
                             </ul>
                         </div>
 
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
+                                <li id="liData"></li>
+                                <li id="liTime"></li>
+                                <li id="liComment"></li>
                             </ul>
                         </div>
                     </div>
@@ -192,23 +193,6 @@
 </section>
 <%@include file="footer.jsp" %>
 
-<script src="js/app.js"></script>
-<%--<script>--%>
-<%--    function finalizingForm() {--%>
-
-<%--        let quantityOfBags = document.getElementById("quantityOfBags");--%>
-<%--        if (quantityOfBags.value === 1) {--%>
-<%--        document.getElementById("finalQuantity").innerText = quantityOfBags.value + ' worek darów';--%>
-<%--        }else if (quantityOfBags.value > 1 && quantityOfBags < 5){--%>
-<%--            document.getElementById("finalQuantity").innerText = quantityOfBags.value + ' worki darów';--%>
-<%--        } else {--%>
-<%--            document.getElementById("finalQuantity").innerText = quantityOfBags.value + ' worków darów';--%>
-<%--        }--%>
-
-
-<%--        let street = document.getElementById("formStreet");--%>
-<%--        document.getElementById("liStreet").innerText = street.value;--%>
-
-<%--    }--%>
-<%--</script>--%>
+<script src="../../resources/js/app.js"></script>
+<script src="../../resources/js/form.js" type="text/javascript"></script>
 </body>
