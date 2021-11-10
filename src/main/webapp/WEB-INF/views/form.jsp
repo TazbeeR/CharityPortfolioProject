@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-
 <%@include file="header.jsp" %>
 <section class="form--steps">
     <div class="form--steps-instructions">
@@ -192,7 +191,20 @@
     </div>
 </section>
 <%@include file="footer.jsp" %>
-
+<script>
+    let tomorrow = new Date();
+    let dd = tomorrow.getDate() + 1;
+    let mm = tomorrow.getMonth() + 1; //January is 0 so need to add 1 to make it 1!
+    let yyyy = tomorrow.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd
+    }
+    if (mm < 10) {
+        mm = '0' + mm
+    }
+    tomorrow = yyyy + '-' + mm + '-' + dd;
+    document.getElementById("formDate").setAttribute("min", tomorrow);
+</script>
 <script src="../../resources/js/app.js"></script>
 <script src="../../resources/js/form.js" type="text/javascript"></script>
 </body>
