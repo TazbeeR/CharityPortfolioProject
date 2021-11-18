@@ -22,6 +22,7 @@ public class RegisterController {
         model.addAttribute("user", new User());
         return "register";
     }
+
     @PostMapping("/register")
     public String registered(@Valid User user, BindingResult result){
         if (result.hasErrors()){
