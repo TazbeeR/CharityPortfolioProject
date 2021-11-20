@@ -26,13 +26,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/login/**").not().fullyAuthenticated()
                 .antMatchers("/donation").hasAnyRole("USER", "ADMIN")
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/donation", true)
-                .and().logout().logoutSuccessUrl("/")
-                .permitAll()
+                .and().logout().permitAll().logoutSuccessUrl("/")
+
                 .and().exceptionHandling().accessDeniedPage("/403");
 
     }
