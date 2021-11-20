@@ -2,17 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Podziel się tym co masz</title>
-    <link rel="stylesheet" href="<c:url value="../../resources/css/style.css"/>" type="text/css"/>
-</head>
-<body>
-<header>
+
     <nav class="container container--70">
         <sec:authorize access="!isAuthenticated()">
             <ul class="nav--actions">
@@ -22,13 +12,17 @@
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
             <ul class="nav--actions">
-                <li>Witaj: <a href="/userinfo">${pageContext.request.userPrincipal.name}</a></li>
-                <form action="<c:url value="/logout"/>" method="post">
-                    <li class="highlighted">
-                        <input type="submit" value="Wyloguj">
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    </li>
-                </form>
+                <li class="logged-user">
+                    Witaj ${pageContext.request.userPrincipal.name}
+                    <ul class="dropdown">
+                        <li><a href="/userinfo">Profil</a></li>
+                        <sec:authorize access="hasRole('ADMIN')">
+                        <li><a href="#">Panel administratora</a> </li>
+                        </sec:authorize>
+                        <li><a href="#">Moje zbiórki</a></li>
+                        <li><a href="/logout">Wyloguj</a></li>
+                    </ul>
+                </li>
             </ul>
         </sec:authorize>
         <ul>
@@ -39,4 +33,3 @@
             <li><a href="/#contact" class="btn btn--without-border">Kontakt</a></li>
         </ul>
     </nav>
-</header>

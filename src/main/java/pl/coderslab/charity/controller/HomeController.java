@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entity.CurrentUser;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.service.DonationService;
@@ -27,6 +25,12 @@ private DonationService donationService;
         return "index";
     }
 
+    @PostMapping("/")
+    public String contactMessage(Model model, @RequestParam String name, @RequestParam String email, @RequestParam String message){
+
+
+        return null;
+    }
     @GetMapping("/403")
     public String page403(){
         return "403";

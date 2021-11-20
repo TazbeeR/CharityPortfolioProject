@@ -1,8 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<%@ include file="header.jsp"%>
-
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Podziel się tym co masz</title>
+    <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>" type="text/css"/>
+</head>
+<body>
+<header class="header--main-page">
+    <%@ include file="navbar.jsp" %>
+    <%@include file="header.jsp" %>
+</header>
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
@@ -48,8 +59,12 @@
             <p>kurier przyjedzie w dogodnym terminie</p>
         </div>
     </div>
-
-    <a href="/donation" class="btn btn--large">Złóż dar</a>
+    <sec:authorize access="!isAuthenticated()">
+        <a href="/register" class="btn btn--large">Załóż konto</a>
+    </sec:authorize>
+    <sec:authorize access="isAuthenticated()">
+        <a href="/donation" class="btn btn--large">Złóż dar</a>
+    </sec:authorize>
 </section>
 
 <section id="about-us" class="about-us">
@@ -57,9 +72,11 @@
         <h2>O nas</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas vitae animi rem pariatur incidunt libero
             optio esse quisquam illo omnis.</p>
-        <img src="<c:url value="../../resources/images/signature.svg"/>" class="about-us--text-signature" alt="Signature"/>
+        <img src="<c:url value="../../resources/images/signature.svg"/>" class="about-us--text-signature"
+             alt="Signature"/>
     </div>
-    <div class="about-us--image"><img src="<c:url value="../../resources/images/about-us.jpg"/>" alt="People in circle"/>
+    <div class="about-us--image"><img src="<c:url value="../../resources/images/about-us.jpg"/>"
+                                      alt="People in circle"/>
     </div>
 </section>
 
@@ -74,14 +91,14 @@
         <ul class="help--slides-items">
             <c:forEach begin="0" end="${institutions.size()}" step="2" var="item">
 
-            <li>
-                <c:forEach items="${institutions}" var="institution" begin="${item}" end="${item + 1}">
-                <div class="col">
-                    <div class="title">Fundacja ${institution.name}</div>
-                    <div class="subtitle">Cel i misja: ${institution.description}</div>
-                </div>
-                </c:forEach>
-            </li>
+                <li>
+                    <c:forEach items="${institutions}" var="institution" begin="${item}" end="${item + 1}">
+                        <div class="col">
+                            <div class="title">Fundacja ${institution.name}</div>
+                            <div class="subtitle">Cel i misja: ${institution.description}</div>
+                        </div>
+                    </c:forEach>
+                </li>
 
             </c:forEach>
         </ul>
@@ -89,4 +106,4 @@
 
 </section>
 
-<%@ include file="footer.jsp"%>
+<%@ include file="footer.jsp" %>

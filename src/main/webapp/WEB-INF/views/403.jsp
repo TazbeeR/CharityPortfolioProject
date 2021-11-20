@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@include file="navbar.jsp" %>
-
 <div class="slogan container container--90">
     <h2>
         Brak uprawnień do wyświetlenia tej strony <br />
