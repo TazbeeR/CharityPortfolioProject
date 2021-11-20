@@ -54,7 +54,7 @@
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/4</div>
 
-        <form method="post" modelattribute="donation">
+        <form:form method="post" modelAttribute="donation">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
@@ -215,7 +215,7 @@
                     <button type="submit" class="btn">Potwierdzam</button>
                 </div>
             </div>
-        </form>
+        </form:form>
     </div>
 </section>
 <%@include file="footer.jsp" %>

@@ -11,7 +11,6 @@ import pl.coderslab.charity.service.UserService;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -22,17 +21,16 @@ public class UserServiceImpl implements UserService {
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
-    public Optional<User> findByUserName(String email) {
-        Optional<User> userOptional = userRepository.findByUsername(email);
-        return userOptional;
+    public User findByUserName(String username) {
+             return userRepository.findByUsername(username);
     }
 
     @Override
     public void save(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
-        Role role = roleRepository.findByName("ROLE_USER");
-        user.setRoleSet(new HashSet<Role>(Arrays.asList(role)));
+        Role userRole = roleRepository.findByName("ROLE_USER");
+        user.setRoleSet(new HashSet<Role>(Arrays.asList(userRole)));
 
         userRepository.save(user);
     }

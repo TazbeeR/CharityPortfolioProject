@@ -28,7 +28,7 @@ public class RegisterController {
         if (result.hasErrors()){
             return "register";
         }
-        if (userService.findByUserName(user.getUsername()).isPresent()){
+        if (userService.findByUserName(user.getUsername()) != null){
             return "register";
         }
 

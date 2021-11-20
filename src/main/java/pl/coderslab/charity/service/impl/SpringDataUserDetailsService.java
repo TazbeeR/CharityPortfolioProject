@@ -1,36 +1,40 @@
 package pl.coderslab.charity.service.impl;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pl.coderslab.charity.entity.User;
+//import org.springframework.security.core.userdetails.User;
+import pl.coderslab.charity.entity.CurrentUser;
 import pl.coderslab.charity.service.UserService;
+import pl.coderslab.charity.entity.User;
 
-import javax.persistence.EntityExistsException;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Service
-@AllArgsConstructor
-@NoArgsConstructor
 public class SpringDataUserDetailsService implements UserDetailsService {
 
     private UserService userService;
 
+    @Autowired
+    public void setUserRepository(UserService userService){
+        this.userService = userService;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) {
-        Optional<User> user = userService.findByUserName(username);
-        if (!user.isPresent()) {throw new UsernameNotFoundException(username); }
+        User user = userService.findByUserName(username);
+        if (user == null) {throw new UsernameNotFoundException(username); }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        user.get().getRoleSet().forEach(r ->
+        user.getRoleSet().forEach(r ->
                 grantedAuthorities.add(new SimpleGrantedAuthority(r.getName())));
-        return new org.springframework.security.core.userdetails.User(
-                user.get().getUsername(), user.get().getPassword(), grantedAuthorities);
+//        return new org.springframework.security.core.userdetails.User(
+//                user.getUsername(), user.getPassword(), grantedAuthorities);
+        return new CurrentUser(user.getUsername(),user.getPassword(),
+                grantedAuthorities, user);
     }
 }

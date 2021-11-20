@@ -2,6 +2,7 @@ package pl.coderslab.charity;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation
@@ -24,14 +25,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     public void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.authorizeRequests()
-                .antMatchers("/**").permitAll()
-//                .antMatchers("/donation").hasAnyRole("USER", "ADMIN")
-                .and().formLogin()
-                .loginPage("/login")
+        httpSecurity
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/login/**").not().fullyAuthenticated()
+                .antMatchers("/donation").hasAnyRole("USER", "ADMIN")
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/donation", true)
                 .and().logout().logoutSuccessUrl("/")
                 .permitAll()
-                .and().exceptionHandling()
-                .accessDeniedPage("/403");
+                .and().exceptionHandling().accessDeniedPage("/403");
+
+    }
+    @Override
+    protected void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception{
+        authenticationManagerBuilder
+                .userDetailsService(customUserDetailsService())
+                .passwordEncoder(bCryptPasswordEncoder());
     }
 }
