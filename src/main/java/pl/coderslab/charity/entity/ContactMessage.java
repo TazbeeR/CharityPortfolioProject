@@ -39,4 +39,11 @@ public class ContactMessage {
 
     @NotNull
     private Boolean readed;
+
+    public ContactMessage(String name, String email, String message, Boolean readed) {
+        this.name = name;
+        this.email = email;
+        this.message = message;
+        this.readed = readed;
+    }
 }
