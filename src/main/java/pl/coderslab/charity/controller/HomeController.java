@@ -12,7 +12,6 @@ import pl.coderslab.charity.service.ContactMessageService;
 import pl.coderslab.charity.service.DonationService;
 import pl.coderslab.charity.service.InstitutionService;
 
-
 @Controller
 @AllArgsConstructor
 public class HomeController {
@@ -30,12 +29,13 @@ private ContactMessageService contactMessageService;
     }
 
     @PostMapping("/")
-    public String contactMessage(Model model, @RequestParam String name, @RequestParam String email, @RequestParam String message){
+    public String contactMessage(@RequestParam String name, @RequestParam String email, @RequestParam String message){
         ContactMessage newMessage = new ContactMessage(name, email, message, false);
         contactMessageService.save(newMessage);
 
         return "form-confirmation";
     }
+
     @GetMapping("/403")
     public String page403(){
         return "403";

@@ -11,14 +11,12 @@
 </head>
 <body>
 <header class="header--form-page">
-<%@include file="navbar.jsp" %>
+    <%@include file="../navbar.jsp" %>
 
-<div class="slogan container container--90">
-    <h2>
-        Dziękujemy za przesłanie formularza. Na maila prześlemy wszelkie
-        informacje o odbiorze.
-    </h2>
-</div>
+    <div class="slogan container container--90">
+        <h2>Donacje</h2>
+
+    </div>
 </header>
 
-<%@include file="footer.jsp"%>
+<%@include file="../footer.jsp"%>

@@ -27,11 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .authorizeRequests()
-                .antMatchers("/login/**", "/contact").not().fullyAuthenticated()
+                .antMatchers("/login", "/").permitAll()
                 .antMatchers("/donation").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .and().formLogin().loginPage("/login").defaultSuccessUrl("/donation", true)
                 .and().logout().permitAll().logoutSuccessUrl("/")
-
                 .and().exceptionHandling().accessDeniedPage("/403");
 
     }

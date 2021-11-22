@@ -6,7 +6,7 @@
     <div id="contact" class="contact">
         <h2>Skontaktuj się z nami</h2>
         <h3>Formularz kontaktowy</h3>
-        <form:form class="form--contact" method="post">
+        <form:form class="form--contact" method="post" action="/">
             <div class="form-group form-group--50"><input type="text" name="name" placeholder="Imię"/></div>
             <div class="form-group form-group--50"><input type="email" name="email" placeholder="Email"/></div>
 
