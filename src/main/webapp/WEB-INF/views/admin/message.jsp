@@ -21,7 +21,7 @@
                 <th style="width: 10%">Imię</th>
                 <th style="width: 18%">Email</th>
                 <th>Wiadomość</th>
-                <th style="width: 10%">Akcje</th>
+                <th style="width: 220px">Akcje</th>
             </tr>
             </thead>
             <tfoot>
@@ -37,12 +37,13 @@
                 <tr>
                     <td>${message.id}</td>
                     <td>${message.name}</td>
+<%--                    <c:if test=""--%>
                     <td>${message.email}</td>
-                    <td>${message.message}</td>
-                    <td>
-                        <button>Przeczytane</button>
-                        <button>Usuń</button>
 
+                    <td><a href="/admin/message/read/${message.id}">${message.message}</a></td>
+                    <td>
+<%--                       <button class="btn-gray" onclick="document.location='/admin/message/read/${message.id}'">Czytaj</button> &nbsp;--%>
+                       <button class="btn-gray" onclick="document.location='/admin/message/delete/${message.id}'">Usuń</button>
                     </td>
                 </tr>
             </c:forEach>

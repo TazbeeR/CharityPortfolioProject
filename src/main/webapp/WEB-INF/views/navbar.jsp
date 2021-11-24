@@ -34,10 +34,10 @@
             <ul>
                 <li><a class="btn btn--without-border">Panel administratora</a></li>
                 <li><a href="/admin/message/all" class="btn btn--without-border">Wiadomości</a></li>
-                <li><a href="/admin/institution" class="btn btn--without-border">Instytucje</a></li>
-                <li><a href="/admin/donation" class="btn btn--without-border">Donacje</a></li>
-                <li><a href="/admin/user" class="btn btn--without-border">Użytkownicy</a></li>
-                <li><a href="/admin/category" class="btn btn--without-border">Kategorie</a></li>
+                <li><a href="/admin/institution/all" class="btn btn--without-border">Instytucje</a></li>
+                <li><a href="/admin/donation/all" class="btn btn--without-border">Donacje</a></li>
+                <li><a href="/admin/user/all" class="btn btn--without-border">Użytkownicy</a></li>
+                <li><a href="/admin/category/all" class="btn btn--without-border">Kategorie</a></li>
             </ul>
     </sec:authorize>
 </nav>
