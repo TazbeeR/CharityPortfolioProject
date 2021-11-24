@@ -37,10 +37,13 @@
                 <tr>
                     <td>${message.id}</td>
                     <td>${message.name}</td>
-<%--                    <c:if test=""--%>
                     <td>${message.email}</td>
-
-                    <td><a href="/admin/message/read/${message.id}">${message.message}</a></td>
+                    <c:if test="${message.readed == false}">
+                    <td><a href="/admin/message/read/${message.id}" style="font-weight: bold; font-size: 20px; color: red" >${message.message}</a></td>
+                    </c:if>
+                    <c:if test="${message.readed == true}">
+                        <td><a href="/admin/message/read/${message.id}">${message.message}</a></td>
+                    </c:if>
                     <td>
 <%--                       <button class="btn-gray" onclick="document.location='/admin/message/read/${message.id}'">Czytaj</button> &nbsp;--%>
                        <button class="btn-gray" onclick="document.location='/admin/message/delete/${message.id}'">Usuń</button>
