@@ -17,7 +17,7 @@
         <table class="tableAdmin">
             <thead>
             <tr>
-                <th style="width: 5%">Id</th>
+                <th style="width: 75px">Id</th>
                 <th style="width: 10%">Imię</th>
                 <th style="width: 18%">Email</th>
                 <th>Wiadomość</th>
@@ -39,7 +39,7 @@
                     <td>${message.name}</td>
                     <td>${message.email}</td>
                     <c:if test="${message.readed == false}">
-                    <td><a href="/admin/message/read/${message.id}" style="font-weight: bold; font-size: 20px; color: red" >${message.message}</a></td>
+                    <td><a href="/admin/message/read/${message.id}" style="font-weight: bold; font-size: 20px">${message.message}</a></td>
                     </c:if>
                     <c:if test="${message.readed == true}">
                         <td><a href="/admin/message/read/${message.id}">${message.message}</a></td>
