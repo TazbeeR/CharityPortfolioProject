@@ -1,6 +1,5 @@
 package pl.coderslab.charity.service;
 
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.entity.Category;
 import pl.coderslab.charity.repository.CategoryRepository;
@@ -8,9 +7,7 @@ import pl.coderslab.charity.repository.CategoryRepository;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
-public class CategoryService {
-    private final CategoryRepository categoryRepository;
+public interface CategoryService {
 
-    public List<Category> getCategories(){ return categoryRepository.findAll();}
+    List<Category> getCategories();
 }

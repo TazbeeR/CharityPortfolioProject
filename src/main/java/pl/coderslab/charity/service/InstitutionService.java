@@ -1,17 +1,18 @@
 package pl.coderslab.charity.service;
 
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.entity.Institution;
-import pl.coderslab.charity.repository.InstitutionRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-@AllArgsConstructor
-public class InstitutionService {
+public interface InstitutionService {
 
-    private final InstitutionRepository institutionRepository;
+    List<Institution> getInstitutions ();
+    Optional<Institution> findById (Long id);
+    void save(Institution institution);
+    void update(Institution institution);
+    void remove(Institution institution);
 
-    public List<Institution> getInstitutions () {return institutionRepository.findAll();}
 }

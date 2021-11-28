@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="d40j2urnbpfujn@ec2-54-154-101-45.eu-west-1.compute.amazonaws.com" uuid="b00b28a4-ad0c-4270-9cfe-18ff9bc9647e">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-54-154-101-45.eu-west-1.compute.amazonaws.com:5432/d40j2urnbpfujn</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
