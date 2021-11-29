@@ -24,7 +24,7 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public String registered(@Valid User user, BindingResult result){
+    public String registered(@Valid User user, BindingResult result, Model model){
         if (result.hasErrors()){
             return "register";
         }
@@ -33,9 +33,10 @@ public class RegisterController {
         }
 
         if (!user.getPassword().equals(user.getPassword2())){
+            String dontMatch = "Hasła muszą być identyczne";
+            model.addAttribute("dontMatch", dontMatch);
             return "register";
         }
-
 
         userService.save(user);
 

@@ -18,13 +18,16 @@
     <h2>Załóż konto</h2>
     <form:form method="post" modelAttribute="user">
         <div class="form-group">
-            <input type="email" name="username" placeholder="Email"/>
+            <form:input type="email" path="username" placeholder="Email"/><br />
+            <form:errors path="username" cssStyle="color: red; font-size: medium"/>
         </div>
         <div class="form-group">
-            <input type="password" name="password" placeholder="Hasło"/>
+            <form:input type="password" path="password" placeholder="Hasło"/><br />
+            <form:errors path="password" cssStyle="color: red; font-size: medium"/>
         </div>
         <div class="form-group">
-            <input type="password" name="password2" placeholder="Powtórz hasło"/>
+            <form:input type="password" path="password2" placeholder="Powtórz hasło"/><br />
+            <span style="color: red; font-size: medium">${dontMatch}</span>
         </div>
 
         <div class="form-group form-group--buttons">

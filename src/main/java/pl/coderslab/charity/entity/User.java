@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -22,14 +23,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Email
-    @NotBlank
+    @Email(message = "Do rejestracji wymagany jest email")
+    @NotBlank(message = "Do rejestracji wymagany jest email")
     @Size(max = 128)
     @Column(unique = true)
     private String username;
 
-    @NotBlank
-    @Size(min = 5, max = 64)
+    @Size(min = 5, max = 64, message = "Musi mieć minimum 5 znaków")
     private String password;
 
     @Transient
