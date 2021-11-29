@@ -15,7 +15,7 @@ public class InstitutionServiceImpl implements InstitutionService {
 
     private final InstitutionRepository institutionRepository;
 
-    public List<Institution> getInstitutions () {
+    public List<Institution> getInstitutions() {
         return institutionRepository.findAll();
 
     }
@@ -27,7 +27,7 @@ public class InstitutionServiceImpl implements InstitutionService {
 
     @Override
     public void update(Institution institution) {
-            institutionRepository.save(institution);
+        institutionRepository.save(institution);
     }
 
     @Override

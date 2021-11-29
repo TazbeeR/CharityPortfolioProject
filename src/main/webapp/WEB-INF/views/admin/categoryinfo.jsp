@@ -13,17 +13,15 @@
 <body>
 <header class="header--form-page">
     <%@include file="../navbar.jsp" %>
-    <h2>Szczegóły instytucji</h2>
+    <h2>Szczegóły kategorii</h2>
     <div style="width: 50%; margin: 0 auto">
-        <form:form class="form--contact" modelAttribute="institution" method="post">
+        <form:form class="form--contact" modelAttribute="category" method="post">
 
             <form:input type="hidden" path="id"/>
 
             <div class="form-group form-group--50">
-                <form:input type="text" path="name" placeholder="Nazwa fundacji"/></div>
-
-            <div class="form-group">
-                <form:textarea path="description" placeholder="Krótki opis fundacji" rows="1"></form:textarea></div>
+                <form:input type="text" path="name" placeholder="Nazwa kategorii"/>
+            </div>
 
             <button class="btn" type="submit">Zapisz</button>
         </form:form></div>
